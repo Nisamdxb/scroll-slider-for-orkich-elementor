@@ -1,24 +1,13 @@
 .product-slide-card {
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateX(120px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
   will-change: transform, opacity;
-}
-
-.product-slide-card:not(.slide-from-left):not(.slide-from-right) {
-  transform: translateY(60px);
-}
-
-.product-slide-card.slide-from-left {
-  transform: translateX(-80px);
-}
-
-.product-slide-card.slide-from-right {
-  transform: translateX(80px);
 }
 
 .product-slide-card.slide-in-view {
   opacity: 1;
-  transform: translate(0, 0);
+  transform: translateX(0);
 }
 
 .product-slide-card:nth-child(1) { transition-delay: 0s;    }
