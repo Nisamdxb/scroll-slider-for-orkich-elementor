@@ -1,116 +1,39 @@
 <!--
   ============================================================
-  SCROLL SLIDE ANIMATION FOR ELEMENTOR PRODUCT CONTAINERS
+  SCROLL SLIDE ANIMATION FOR ELEMENTOR — SETUP INSTRUCTIONS
   ============================================================
 
-  HOW TO ADD THIS TO YOUR ELEMENTOR SITE:
+  3 SEPARATE FILES ARE PROVIDED:
 
-  STEP 1 — Add the CSS:
-    Go to: Elementor > Theme Style > Custom CSS  (or)
-    WordPress Dashboard > Appearance > Customize > Additional CSS
-    Then paste everything inside the <style> block below.
+  1. slide-animation.css  → paste into WordPress CSS field (no tags)
+  2. slide-animation.js   → paste into Elementor Custom HTML widget (wrapped in <script> tags below)
+  3. This file            → instructions only
 
-  STEP 2 — Add the JS:
-    In Elementor editor, drag a "Custom HTML" widget anywhere on
-    the page (e.g. at the very bottom of the page section).
-    Paste everything inside the <script> block below into it.
+  ── STEP 1: Add CSS ──────────────────────────────────────────
+  Copy the contents of  slide-animation.css
+  Paste it into:
+    WordPress Dashboard → Appearance → Customize → Additional CSS
+    OR
+    Elementor → Settings → Custom CSS
 
-  STEP 3 — Tag your product containers:
-    In Elementor, click each of your 9 product containers,
-    go to Advanced tab > CSS Classes, and add:  product-slide-card
-    (separate multiple classes with a space)
+  ── STEP 2: Add JS ───────────────────────────────────────────
+  In Elementor editor, drag a "Custom HTML" widget to the bottom
+  of your page. Paste the following into it:
 
-    Optionally, for alternating left/right slide directions,
-    add one of these extra classes alongside product-slide-card:
-      slide-from-left   → slides in from the left
-      slide-from-right  → slides in from the right
-      (default with no extra class = slides up from below)
+  <script>
+  [contents of slide-animation.js]
+  </script>
 
+  ── STEP 3: Tag your 9 product containers ────────────────────
+  Click each container → Advanced tab → CSS Classes → add:
+
+    product-slide-card                   (slides up from below)
+    product-slide-card slide-from-left   (slides in from left)
+    product-slide-card slide-from-right  (slides in from right)
+
+  Recommended pattern for 3 rows of 3 cards:
+    Card 1,4,7 → product-slide-card slide-from-left
+    Card 2,5,8 → product-slide-card
+    Card 3,6,9 → product-slide-card slide-from-right
   ============================================================
 -->
-
-<style>
-/* ── Base hidden state for all product cards ─────────────────── */
-.product-slide-card {
-  opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  will-change: transform, opacity;
-}
-
-/* Slide-up (default) */
-.product-slide-card:not(.slide-from-left):not(.slide-from-right) {
-  transform: translateY(60px);
-}
-
-/* Slide from left */
-.product-slide-card.slide-from-left {
-  transform: translateX(-80px);
-}
-
-/* Slide from right */
-.product-slide-card.slide-from-right {
-  transform: translateX(80px);
-}
-
-/* ── Visible / animated-in state ─────────────────────────────── */
-.product-slide-card.slide-in-view {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-/* ── Stagger delay for cards that appear at the same time ─────── */
-.product-slide-card:nth-child(1) { transition-delay: 0s;    }
-.product-slide-card:nth-child(2) { transition-delay: 0.10s; }
-.product-slide-card:nth-child(3) { transition-delay: 0.20s; }
-.product-slide-card:nth-child(4) { transition-delay: 0.30s; }
-.product-slide-card:nth-child(5) { transition-delay: 0.10s; }
-.product-slide-card:nth-child(6) { transition-delay: 0.20s; }
-.product-slide-card:nth-child(7) { transition-delay: 0.30s; }
-.product-slide-card:nth-child(8) { transition-delay: 0.10s; }
-.product-slide-card:nth-child(9) { transition-delay: 0.20s; }
-</style>
-
-<script>
-(function () {
-  'use strict';
-
-  /**
-   * Trigger slide-in animation when a product card enters the viewport.
-   * Uses IntersectionObserver for smooth, performant scroll detection.
-   */
-  function initScrollSlide() {
-    var cards = document.querySelectorAll('.product-slide-card');
-
-    if (!cards.length) return;
-
-    // IntersectionObserver fires the callback whenever a card crosses
-    // the threshold boundary (20% of the card visible triggers the animation).
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('slide-in-view');
-            // Stop observing once animated in so it doesn't reset on scroll-up
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.15,       // 15% of card must be visible before animating
-        rootMargin: '0px 0px -40px 0px'  // start slightly before the bottom edge
-      }
-    );
-
-    cards.forEach(function (card) {
-      observer.observe(card);
-    });
-  }
-
-  // Run after the DOM is fully ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollSlide);
-  } else {
-    initScrollSlide();
-  }
-})();
-</script>
