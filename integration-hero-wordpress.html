@@ -1,7 +1,7 @@
 <style>
 .integration-hero {
   position: relative;
-  padding: 8rem 1.5rem;
+  padding: 8rem 0 8rem 0;
   overflow: hidden;
   background: #fff;
 }
@@ -17,6 +17,7 @@
   position: relative;
   max-width: 80rem;
   margin: 0 auto;
+  padding: 0 1.5rem;
   text-align: center;
 }
 .ih-badge {
@@ -58,10 +59,15 @@
   transition: background 0.2s;
 }
 .ih-btn:hover { background: #1f2937; }
+
+/* Carousel breaks out of max-width to go full viewport width */
 .ih-carousel {
-  margin-top: 3rem;
-  overflow: hidden;
   position: relative;
+  margin-top: 3rem;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
   padding-bottom: 0.5rem;
 }
 .ih-row {
@@ -102,7 +108,7 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 6rem;
+  width: 8rem;
   pointer-events: none;
   z-index: 1;
 }
@@ -116,12 +122,13 @@
     <h1 class="ih-title">Integrate with favorite tools</h1>
     <p class="ih-subtitle">250+ top apps are available to integrate seamlessly with your workflow.</p>
     <a href="#" class="ih-btn">Get started</a>
-    <div class="ih-carousel">
-      <div class="ih-row ih-animate-left" id="ih-row1"></div>
-      <div class="ih-row ih-animate-right" id="ih-row2"></div>
-      <div class="ih-fade-left"></div>
-      <div class="ih-fade-right"></div>
-    </div>
+  </div>
+
+  <div class="ih-carousel">
+    <div class="ih-row ih-animate-left" id="ih-row1"></div>
+    <div class="ih-row ih-animate-right" id="ih-row2"></div>
+    <div class="ih-fade-left"></div>
+    <div class="ih-fade-right"></div>
   </div>
 </section>
 
@@ -149,7 +156,7 @@
     var container = document.getElementById(id);
     if (!container) return;
     var repeated = [];
-    for (var r = 0; r < 4; r++) repeated = repeated.concat(icons);
+    for (var r = 0; r < 6; r++) repeated = repeated.concat(icons);
     repeated.forEach(function(src) {
       var wrap = document.createElement("div");
       wrap.className = "ih-icon";
