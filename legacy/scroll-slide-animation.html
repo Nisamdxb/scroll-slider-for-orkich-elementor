@@ -1,0 +1,39 @@
+<!--
+  ============================================================
+  SCROLL SLIDE ANIMATION FOR ELEMENTOR — SETUP INSTRUCTIONS
+  ============================================================
+
+  3 SEPARATE FILES ARE PROVIDED:
+
+  1. slide-animation.css  → paste into WordPress CSS field (no tags)
+  2. slide-animation.js   → paste into Elementor Custom HTML widget (wrapped in <script> tags below)
+  3. This file            → instructions only
+
+  ── STEP 1: Add CSS ──────────────────────────────────────────
+  Copy the contents of  slide-animation.css
+  Paste it into:
+    WordPress Dashboard → Appearance → Customize → Additional CSS
+    OR
+    Elementor → Settings → Custom CSS
+
+  ── STEP 2: Add JS ───────────────────────────────────────────
+  In Elementor editor, drag a "Custom HTML" widget to the bottom
+  of your page. Paste the following into it:
+
+  <script>
+  [contents of slide-animation.js]
+  </script>
+
+  ── STEP 3: Tag your 9 product containers ────────────────────
+  Click each container → Advanced tab → CSS Classes → add:
+
+    product-slide-card                   (slides up from below)
+    product-slide-card slide-from-left   (slides in from left)
+    product-slide-card slide-from-right  (slides in from right)
+
+  Recommended pattern for 3 rows of 3 cards:
+    Card 1,4,7 → product-slide-card slide-from-left
+    Card 2,5,8 → product-slide-card
+    Card 3,6,9 → product-slide-card slide-from-right
+  ============================================================
+-->
