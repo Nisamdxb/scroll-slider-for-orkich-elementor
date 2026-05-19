@@ -1,0 +1,167 @@
+<style>
+.integration-hero {
+  position: relative;
+  padding: 8rem 1.5rem;
+  overflow: hidden;
+  background: #fff;
+}
+.integration-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.ih-content {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.ih-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #000;
+}
+.ih-title {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.ih-subtitle {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ih-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.ih-btn:hover { background: #1f2937; }
+.ih-carousel {
+  margin-top: 3rem;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.ih-row {
+  display: flex;
+  gap: 2.5rem;
+  white-space: nowrap;
+  width: max-content;
+}
+.ih-row + .ih-row { margin-top: 1.5rem; }
+.ih-icon {
+  height: 4rem;
+  width: 4rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ih-icon img {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: contain;
+}
+@keyframes ih-scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ih-scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.ih-animate-left  { animation: ih-scroll-left  30s linear infinite; }
+.ih-animate-right { animation: ih-scroll-right 30s linear infinite; }
+.ih-fade-left,
+.ih-fade-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 6rem;
+  pointer-events: none;
+  z-index: 1;
+}
+.ih-fade-left  { left:  0; background: linear-gradient(to right, #fff, transparent); }
+.ih-fade-right { right: 0; background: linear-gradient(to left,  #fff, transparent); }
+</style>
+
+<section class="integration-hero">
+  <div class="ih-content">
+    <span class="ih-badge">⚡ Integrations</span>
+    <h1 class="ih-title">Integrate with favorite tools</h1>
+    <p class="ih-subtitle">250+ top apps are available to integrate seamlessly with your workflow.</p>
+    <a href="#" class="ih-btn">Get started</a>
+    <div class="ih-carousel">
+      <div class="ih-row ih-animate-left" id="ih-row1"></div>
+      <div class="ih-row ih-animate-right" id="ih-row2"></div>
+      <div class="ih-fade-left"></div>
+      <div class="ih-fade-right"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var ROW1 = [
+    "https://cdn-icons-png.flaticon.com/512/5968/5968854.png",
+    "https://cdn-icons-png.flaticon.com/512/732/732221.png",
+    "https://cdn-icons-png.flaticon.com/512/733/733609.png",
+    "https://cdn-icons-png.flaticon.com/512/732/732084.png",
+    "https://cdn-icons-png.flaticon.com/512/733/733585.png",
+    "https://cdn-icons-png.flaticon.com/512/281/281763.png",
+    "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+  ];
+  var ROW2 = [
+    "https://cdn-icons-png.flaticon.com/512/174/174857.png",
+    "https://cdn-icons-png.flaticon.com/512/906/906324.png",
+    "https://cdn-icons-png.flaticon.com/512/888/888841.png",
+    "https://cdn-icons-png.flaticon.com/512/5968/5968875.png",
+    "https://cdn-icons-png.flaticon.com/512/906/906361.png",
+    "https://cdn-icons-png.flaticon.com/512/732/732190.png",
+    "https://cdn-icons-png.flaticon.com/512/888/888847.png"
+  ];
+  function buildRow(id, icons) {
+    var container = document.getElementById(id);
+    if (!container) return;
+    var repeated = [];
+    for (var r = 0; r < 4; r++) repeated = repeated.concat(icons);
+    repeated.forEach(function(src) {
+      var wrap = document.createElement("div");
+      wrap.className = "ih-icon";
+      var img = document.createElement("img");
+      img.src = src;
+      img.alt = "integration icon";
+      img.loading = "lazy";
+      wrap.appendChild(img);
+      container.appendChild(wrap);
+    });
+  }
+  buildRow("ih-row1", ROW1);
+  buildRow("ih-row2", ROW2);
+})();
+</script>
