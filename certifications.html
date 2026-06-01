@@ -1,0 +1,341 @@
+<!-- Certifications Section - WordPress HTML Block -->
+<!-- Paste this into a WordPress Custom HTML block or use via a page builder HTML widget -->
+
+<style>
+  .cert-section-wrap {
+    width: 100%;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .cert-section {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 20px;
+    background: #ffffff;
+    color: #111;
+    border-radius: 8px;
+  }
+
+  .cert-header {
+    max-width: 768px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .cert-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 500;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+
+  .cert-header p {
+    color: #6b7280;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  /* Grid layout */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 0 0 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .cert-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 40px 40px 16px;
+    }
+  }
+
+  .cert-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Card base */
+  .cert-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    padding: 20px;
+    overflow: hidden;
+    min-height: 180px;
+  }
+
+  .cert-card article {
+    margin-top: auto;
+  }
+
+  .cert-card article p {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .cert-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .cert-card-footer h2 {
+    margin: 0 0 2px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .cert-card-footer p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .cert-card-footer img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  /* Card colour variants */
+  .cert-card--light {
+    background: #f9fafb;
+    color: #111;
+  }
+
+  .cert-card--light.cert-card--grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, #4f4f4f2e 1px, transparent 1px),
+      linear-gradient(to bottom, #4f4f4f2e 1px, transparent 1px);
+    background-size: 50px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%);
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%);
+  }
+
+  .cert-card--blue {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+  }
+
+  .cert-card--dark {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+  }
+
+  /* Flex sizing for tall/short cards in first & last column */
+  @media (min-width: 1024px) {
+    .cert-card--tall { flex: 7; }
+    .cert-card--short { flex: 3; }
+  }
+
+  /* Bottom decorative border */
+  .cert-bottom-deco {
+    position: absolute;
+    border-bottom: 2px solid #e6e6e6;
+    bottom: 16px;
+    height: 64px;
+    z-index: 2;
+    width: 90%;
+    left: 5%;
+  }
+
+  @media (min-width: 768px) {
+    .cert-bottom-deco {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  .cert-bottom-deco-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .cert-bottom-deco-inner::before,
+  .cert-bottom-deco-inner::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+
+  .cert-bottom-deco-inner::before { left: -8px; }
+  .cert-bottom-deco-inner::after  { right: -8px; }
+</style>
+
+<div class="cert-section-wrap">
+  <section class="cert-section">
+
+    <!-- Header -->
+    <div class="cert-header">
+      <h1>Certifications</h1>
+      <p>Let's hear how hypersphere client's feels about our service</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="cert-grid">
+
+      <!-- Column 1 -->
+      <div class="cert-col">
+        <!-- Tall light card -->
+        <div class="cert-card cert-card--light cert-card--grid-bg cert-card--tall">
+          <article>
+            <p>"Hypersphere has been a game-changer for us. Their service is top-notch and their team is incredibly responsive."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Guillermo Rauch</h2>
+                <p>CEO of Enigma</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop"
+                alt="Guillermo Rauch"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+
+        <!-- Short blue card -->
+        <div class="cert-card cert-card--blue cert-card--short">
+          <article>
+            <p>"We've seen incredible results with Hypersphere. Their expertise, dedication."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Rika Shinoda</h2>
+                <p>CEO of Kintsugi</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=687&auto=format&fit=crop"
+                alt="Rika Shinoda"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="cert-col">
+        <div class="cert-card cert-card--dark">
+          <article>
+            <p>"Their team is highly professional, and their innovative solutions have truly transformed the way we operate."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Reacher</h2>
+                <p>CEO of OdeaoLabs</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=1021&auto=format&fit=crop"
+                alt="Reacher"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+
+        <div class="cert-card cert-card--dark">
+          <article>
+            <p>"We're extremely satisfied with Hypersphere. Their expertise and dedication have exceeded our expectations."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>John</h2>
+                <p>CEO of Labsbo</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=687&auto=format&fit=crop"
+                alt="John"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+
+        <div class="cert-card cert-card--dark">
+          <article>
+            <p>"Their customer support is absolutely exceptional. They are always available, incredibly helpful."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Steven Sunny</h2>
+                <p>CEO of boxefi</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1740102074295-c13fae3e4f8a?q=80&w=687&auto=format&fit=crop"
+                alt="Steven Sunny"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="cert-col">
+        <!-- Short blue card -->
+        <div class="cert-card cert-card--blue cert-card--short">
+          <article>
+            <p>"Hypersphere has been a key partner in our growth journey."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Guillermo Rauch</h2>
+                <p>CEO of OdeaoLabs</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=765&auto=format&fit=crop"
+                alt="Guillermo Rauch"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+
+        <!-- Tall light card -->
+        <div class="cert-card cert-card--light cert-card--grid-bg cert-card--tall">
+          <article>
+            <p>"Hypersphere has been a true game-changer for us. Their exceptional service, combined with their deep expertise and commitment to excellence, has made a significant impact on our business."</p>
+            <div class="cert-card-footer">
+              <div>
+                <h2>Paul Brauch</h2>
+                <p>CTO of Spectrum</p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?q=80&w=687&auto=format&fit=crop"
+                alt="Paul Brauch"
+                loading="lazy"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+    <!-- /grid -->
+
+    <!-- Decorative bottom border -->
+    <div class="cert-bottom-deco">
+      <div class="cert-bottom-deco-inner"></div>
+    </div>
+
+  </section>
+</div>
+<!-- /Certifications Section -->
